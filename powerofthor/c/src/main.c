@@ -20,8 +20,8 @@ int main()
     int initialTY; // Thor's starting Y position
     int TX;
     int TY;
-    char move_x[0];
-    char move_y[0];
+    char move_x;
+    char move_y;
     scanf("%d%d%d%d", &LX, &LY, &initialTX, &initialTY);
 
     TX = initialTX;
@@ -55,23 +55,28 @@ int main()
         //if (TY_DOWN < 40)
         //    CAN_MOVE_DOWN  = TRUE
 
-        if (TX == LX) { 
-            move_x[0] = "";
-            if (TY < LY) {
-                move_y[0] = "E";
-            } else {
-                move_y[0] = "W";
-            }
-        }
 
-        if (TY == LY) { 
-            move_y[0] = "";
-            if (TX < LX) {
-                move_x[0] = "N";
-            } else {
-                move_x[0] = "S";           }
+        if (TX == LX) { 
+            move_x = NULL;
+        } 
+        else if (TX < LX) {
+            move_x = 'N';
+        } 
+        else {
+            move_x = 'S';           
         }
         
-        printf("%c%c\n", move_x[0], move_y[0]); // A single line providing the move to be made: N NE E SE S SW W or NW
+        if (TY == LY) { 
+            move_y = NULL;
+        } 
+        else if (TY < LY) {
+            move_y = 'E';
+        } else {
+           move_y = 'W';
+        }
+        
+        
+
+        printf("%c%c\n", move_x, move_y); // A single line providing the move to be made: N NE E SE S SW W or NW
     }
 }

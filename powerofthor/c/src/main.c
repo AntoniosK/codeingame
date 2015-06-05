@@ -34,49 +34,41 @@ int main()
 
         // Write an action using printf(). DON'T FORGET THE TRAILING \n
         // To debug: fprintf(stderr, "Debug messages...\n");
-        //CAN_MOVE_LEFT = FALSE
-        //CAN_MOVE_RIGHT = FALSE
-        //CAN_MOVE_UP = FALSE
-        //CAN_MOVE_DOWN = FALSE
-        
-        //TX_RIGHT = TX + 1
-        //TX_LEFT = TX - 1
-        
-        //if (TX_LEFT >= 0)
-        //    CAN_MOVE_LEFT = TRUE
-        //if (TX_RIGHT < 40)
-        //    CAN_MOVE_RIGHT = TRUE
-            
-        //TY_DOWN = TY + 1
-        //TY_UP = TY - 1
-        
-        //if (TY_UP >= 0)
-        //    CAN_MOVE_UP = TRUE
-        //if (TY_DOWN < 40)
-        //    CAN_MOVE_DOWN  = TRUE
-
-
         if (TX == LX) { 
-            move_x = NULL;
+            move_y = 0;
+             
         } 
         else if (TX < LX) {
-            move_x = 'N';
+            move_y = 'E';
+            TX = TX + 1;
         } 
         else {
-            move_x = 'S';           
+            move_y = 'W';
+            TX = TX - 1;
         }
         
         if (TY == LY) { 
-            move_y = NULL;
+            move_x = 0;
         } 
         else if (TY < LY) {
-            move_y = 'E';
+            move_x = 'S';
+            TY = TY + 1;
         } else {
-           move_y = 'W';
+            move_x = 'N';
+            TY = TY - 1;
         }
         
+        if (!move_x) {
+            printf("%c\n", move_y);
+        }
         
+        if (!move_y) {
+            printf("%c\n", move_x);
+        }
 
-        printf("%c%c\n", move_x, move_y); // A single line providing the move to be made: N NE E SE S SW W or NW
+        if (move_x && move_y) {
+            printf("%c%c\n", move_x, move_y);
+        } 
+        // A single line providing the move to be made: N NE E SE S SW W or NW
     }
 }
